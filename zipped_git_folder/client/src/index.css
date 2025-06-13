@@ -56,9 +56,6 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    /* Force dark theme styling */
-    background-color: #0F172A;
-    color: #F8FAFC;
   }
 
   html.dark body {

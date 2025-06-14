@@ -3,8 +3,15 @@ import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// Skip body parsing for the Stripe webhook so the raw body is available
+app.use((req, res, next) => {
+  if (req.path === "/api/stripe-webhook") return next();
+  return express.json()(req, res, next);
+});
+app.use((req, res, next) => {
+  if (req.path === "/api/stripe-webhook") return next();
+  return express.urlencoded({ extended: false })(req, res, next);
+});
 
 app.use((req, res, next) => {
   const start = Date.now();

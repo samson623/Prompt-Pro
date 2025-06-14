@@ -80,3 +80,5 @@ ehthumbs.db
 # Temporary files
 tmp/
 temp/
+
+zipped_git_folder/

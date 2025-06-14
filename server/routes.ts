@@ -10,6 +10,7 @@ import { z } from "zod";
 // Check for API keys with graceful fallbacks for preview mode
 const hasStripeKey = !!process.env.STRIPE_SECRET_KEY;
 const hasOpenRouterKey = !!process.env.OPENROUTER_API_KEY;
+const openRouterModel = process.env.OPENROUTER_MODEL || 'mistralai/mistral-7b-instruct';
 
 const stripe = hasStripeKey ? new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-10-16",
@@ -67,7 +68,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              model: 'mistralai/mistral-7b-instruct',
+              model: openRouterModel,
               messages: [
                 {
                   role: 'system',
@@ -171,7 +172,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              model: 'mistralai/mistral-7b-instruct',
+              model: openRouterModel,
               messages: [
                 {
                   role: 'system',

@@ -51,6 +51,8 @@ REPLIT_DOMAINS=your-app-domain.replit.app
 
 # OpenRouter API (for AI functionality)
 OPENROUTER_API_KEY=your_openrouter_api_key
+# Optional: override the default model
+# OPENROUTER_MODEL=mistralai/mistral-7b-instruct
 
 # Stripe (for payments)
 STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
@@ -65,6 +67,7 @@ STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
 2. Create an account
 3. Generate an API key from your dashboard
 4. Add it as `OPENROUTER_API_KEY` in your environment
+5. Optionally set `OPENROUTER_MODEL` to choose a different model (defaults to `mistralai/mistral-7b-instruct`)
 
 #### Stripe API Keys
 1. Go to [Stripe Dashboard](https://dashboard.stripe.com/apikeys)

@@ -360,13 +360,19 @@ Please provide a detailed, step-by-step response that considers the specific con
     if (event.type === 'invoice.payment_succeeded') {
       const invoice = event.data.object as Stripe.Invoice;
       const subscriptionId = invoice.subscription as string;
-      
-      // Find user by subscription ID and reset their usage
-      // This would require a query to find the user
-      // For now, we'll implement basic webhook acknowledgment
+
+      const user = await storage.getUserBySubscriptionId(subscriptionId);
+
+      if (user) {
+        await storage.resetUserUsage(user.id);
+
+        const plan = user.currentPlan as keyof typeof PLAN_CONFIGS;
+        const planConfig = PLAN_CONFIGS[plan] ?? PLAN_CONFIGS['free'];
+        await storage.updateUserPlan(user.id, plan, planConfig.promptsLimit);
+      }
     }
 
-    res.json({received: true});
+    res.json({ received: true });
   });
 
   const httpServer = createServer(app);

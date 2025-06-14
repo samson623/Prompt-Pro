@@ -7,6 +7,7 @@ import {
   type InsertPrompt,
   type InsertQuestionnaire,
 } from "@shared/schema";
+import { randomUUID } from 'crypto';
 import { db } from "./db";
 import { eq, desc } from "drizzle-orm";
 
@@ -60,7 +61,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createPrompt(prompt: InsertPrompt): Promise<{ id: string }> {
-    const id = crypto.randomUUID();
+    const id = randomUUID();
     await db.insert(prompts).values({ ...prompt, id });
     return { id };
   }
@@ -75,7 +76,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createQuestionnaire(questionnaire: InsertQuestionnaire): Promise<{ id: string }> {
-    const id = crypto.randomUUID();
+    const id = randomUUID();
     await db.insert(questionnaires).values({ ...questionnaire, id });
     return { id };
   }

@@ -342,6 +342,10 @@ Please provide a detailed, step-by-step response that considers the specific con
 
   // Stripe webhook handler
   app.post('/api/stripe-webhook', express.raw({type: 'application/json'}), async (req, res) => {
+    if (!hasStripeKey || !stripe) {
+      return res.status(501).json({ message: 'Stripe not configured' });
+    }
+
     const sig = req.headers['stripe-signature'];
     let event;
 

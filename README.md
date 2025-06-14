@@ -186,8 +186,9 @@ The application can be deployed on any Node.js hosting platform that supports:
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
+- `npm run start` - Run the production build
+- `npm run check` - Type-check the project
 - `npm run db:push` - Push schema changes to database
-- `npm run db:studio` - Open Drizzle Studio (database GUI)
 
 ### Adding New Features
 

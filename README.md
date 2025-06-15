@@ -1,5 +1,8 @@
 # Prompt Enhancer - AI-Powered Prompt Enhancement SaaS
 
+[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+
+
 A streamlined prompt enhancement application that uses AI to ask clarifying questions before generating improved prompts. Built with React, Node.js, PostgreSQL, and integrates with OpenRouter AI and Stripe for payments.
 
 ## Features
